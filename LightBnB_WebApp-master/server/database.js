@@ -27,7 +27,7 @@ const getUserWithEmail = function(email) {
       console.log("getUserWithEmail: ", result.rows[0]);
       return result.rows[0];
     })
-    .catch((err) => console.log(err.message));
+    .catch((err) => console.log(err));
 }
 exports.getUserWithEmail = getUserWithEmail;
 
@@ -40,12 +40,10 @@ const getUserWithId = function(id) {
   return pool
     .query("SELECT * FROM users WHERE id = $1", [id])
     .then((result) => {
-      console.log(result.rows);
-      return result.rows;
+      console.log(result.rows[0]);
+      return result.rows[0];
     })
-    .catch((err) => console.log(err.message));
-
-  // return Promise.resolve(users[id]);
+    .catch((err) => console.log(err));
 }
 exports.getUserWithId = getUserWithId;
 
@@ -62,7 +60,7 @@ const addUser =  function(user) {
       // console.log(result.rows)
       return result.rows[0];
     })
-    .catch((err) => console.log(err.message));
+    .catch((err) => console.log(err));
 }
 exports.addUser = addUser;
 
@@ -91,7 +89,7 @@ const getAllReservations = function(guest_id, limit = 10) {
       // console.log(result);
       return result.rows
     })
-    .catch((err) => console.log(err.message));
+    .catch((err) => console.log(err));
 }
 exports.getAllReservations = getAllReservations;
 
